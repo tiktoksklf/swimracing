@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zasodev the coding media</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #A020F0;
+        }
+
+        .top-panel {
+            width: 100%;
+            height: 50px;
+            background-color: #000000;
+            box-shadow: 0 0 10px #A020F0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .left-panel {
+            width: 200px;
+            height: 100vh;
+            background-color: #000000;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 10px;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px #A020F0;
+        }
+
+        .left-panel .for-you {
+            margin-bottom: auto;
+        }
+
+        .left-panel .for-you button {
+            width: 100%;
+            padding: 10px;
+            background-color: #111111;
+            color: #A020F0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .left-panel .branding {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 20px;
+            color: #A020F0;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container video {
+            width: 80%;
+            max-width: 1000px;
+            background-color: #000;
+            margin-bottom: 20px;
+        }
+
+        .like-button {
+            background-color: #111111;
+            color: #A020F0;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 0 5px #A020F0;
+        }
+
+        .like-counter {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #A020F0;
+        }
+
+        .search-bar {
+            margin-left: auto;
+            background-color: #111111;
+            color: #A020F0;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #111111;
+            color: #A020F0;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #A020F0;
+        }
+
+        .logout-button {
+            display: none;
+            margin-left: 20px;
+            background-color: #111111;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #A020F0;
+            box-shadow: 0 0 5px #A020F0;
+        }
+
+        .login-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            box-shadow: 0 0 10px #A020F0;
+        }
+
+        .login-form input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: #111111;
+            color: #A020F0;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #222222;
+            color: #A020F0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profile-button {
+            display: none;
+            margin-left: 20px;
+            background-color: #111111;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 5px #A020F0;
+        }
+
+        .profile-button img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .edit-profile-button {
+            display: none;
+            background-color: #111111;
+            color: #A020F0;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 0 5px #A020F0;
+            margin-bottom: 10px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #A020F0;
+        }
+
+        .views {
+            margin-top: 5px;
+            font-size: 16px;
+            color: #A020F0;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-panel">
+        <input type="text" class="search-bar" placeholder="Search...">
+        <button class="profile-button" id="profileButton" onclick="goToProfile()">
+            <img src="https://via.placeholder.com/30" alt="Profile">
+        </button>
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="left-panel">
+        <div class="for-you">
+            <button onclick="showAllRaces()">All Races</button>
+        </div>
+        <div class="branding">zasodev the coding media</div>
+    </div>
+
+    <div class="content">
+        <h1>Swim Racing</h1>
+        <div class="video-container">
+            <video controls>
+                <source src="videoplayback.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button class="like-button" onclick="incrementLikes()">Like</button>
+            <div class="like-counter" id="likeCounter">Likes: 854</div>
+            <div class="caption">Enjoy the latest swim racing video!</div>
+            <div class="views" id="views">Views: 1,234</div>
+            
+        </div>
+    </div>
+
+    <button class="login-button" onclick="showLoginForm()">Login</button>
+
+    <div class="login-form" id="loginForm">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        let likes = 854;
+        let views = 1234; // Initial views count
+        const loggedInUser = localStorage.getItem('loggedInUser');
+
+        function updateLikeCounter() {
+            document.getElementById('likeCounter').innerText = `Likes: ${likes}`;
+        }
+
+        function incrementLikes() {
+            likes++;
+            localStorage.setItem('likes', likes);
+            updateLikeCounter();
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function hideLoginForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === 'zaso' && password === 'Zaso12$$') {
+                localStorage.setItem('loggedInUser', username);
+                alert('Logged in successfully!');
+                updateUI();
+                hideLoginForm();
+            } else if (username === 'vortex' && password === 'Carmeloo1!!') {
+                localStorage.setItem('loggedInUser', username);
+                alert('Logged in successfully!');
+                updateUI();
+                hideLoginForm();
+            } else {
+                alert('Incorrect username or password.');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            updateUI();
+        }
+
+        function updateUI() {
+            const isLoggedIn = localStorage.getItem('loggedInUser');
+            console.log('isLoggedIn:', isLoggedIn); // Debugging statement
+            document.querySelector('.login-button').style.display = isLoggedIn ? 'none' : 'inline-block';
+            document.querySelector('.logout-button').style.display = isLoggedIn ? 'inline-block' : 'none';
+            document.querySelector('.profile-button').style.display = isLoggedIn ? 'inline-block' : 'none';
+            document.querySelector('.edit-profile-button').style.display = isLoggedIn ? 'inline-block' : 'none';
+        }
+
+        function goToProfile() {
+            const user = localStorage.getItem('loggedInUser');
+            if (user) {
+                window.location.href = `user-${user}.html`;
+            } else {
+                alert('Please log in to view your profile.');
+            }
+        }
+
+        function showAllRaces() {
+            alert('Showing all races. Replace this with your actual functionality.');
+        }
+
+        function editProfile() {
+            const user = localStorage.getItem('loggedInUser');
+            if (user) {
+                window.location.href = `user-${user}.html`;
+            } else {
+                alert('Please log in to edit your profile.');
+            }
+        }
+
+        // Initialize UI based on login status and like counter
+        updateUI();
+        updateLikeCounter();
+
+        // Update views count on page load
+        document.getElementById('views').innerText = `Views: ${views}`;
+    </script>
+</body>
+</html>

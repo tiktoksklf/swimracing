@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #A020F0;
+        }
+
+        .top-panel {
+            width: 100%;
+            height: 50px;
+            background-color: #000000;
+            box-shadow: 0 0 10px #A020F0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .top-panel a {
+            color: #A020F0;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header h1 {
+            margin: 0;
+        }
+
+        .username {
+            font-size: 24px;
+            color: #A020F0;
+        }
+
+        .nickname {
+            font-size: 20px;
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700;
+        }
+
+        .verified-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .profile-details span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .profile-video {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .profile-video video {
+            width: 80%;
+            max-width: 800px;
+            background-color: #000;
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #A020F0;
+            text-align: center;
+        }
+
+        .profile-video .views {
+            margin-top: 10px;
+            color: #A020F0;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-panel">
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1 class="username">@zaso <img src="https://cdn.discordapp.com/attachments/1233212062759391253/1274550216824983664/pngwing.com.png?ex=66c2a8e3&is=66c15763&hm=c95e717f95fc36b99d3ad740bc4f60e10925e299a00b27cfa18ed9b96cba84b3&" alt="Verified" class="verified-icon"></h1>
+            <div class="nickname">zaso (owner)</div>
+        </div>
+
+        <div class="profile-details">
+            <span>Followers: 3,254</span>
+            <span>Following: 0</span>
+            join date: 9:25 8/17/24
+        </div>
+
+        <div class="profile-video">
+            <h2>Posted Video</h2>
+            <video id="profileVideo" controls>
+                <source src="videoplayback.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">c7 corvette goes ghost mode after police lights hin up</div>
+            <div class="views">Views: 987</div>
+        </div>
+    </div>
+</body>
+</html>
